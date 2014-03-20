@@ -266,6 +266,7 @@ public class HttpConnectionApiActivity extends Activity implements HttpListner, 
 				      adapter.notifyDataSetChanged();
 				      if (the_caller==1)
 				      from_txt.setText(from_txt.getText());
+				      else
 				      to_txt.setText(to_txt.getText());
 
 				} catch (JSONException e) {
@@ -361,7 +362,22 @@ public class HttpConnectionApiActivity extends Activity implements HttpListner, 
 	private DatePickerDialog.OnDateSetListener datePickerListener = new DatePickerDialog.OnDateSetListener() {
 		public void onDateSet(DatePicker view, int selectedYear,
 				int selectedMonth, int selectedDay) {
-			et.setText(selectedDay + " / " + (selectedMonth + 1) + " / "
+			String user_date= (selectedDay + "/" + (selectedMonth + 1) + "/"
+					+ selectedYear);
+			
+			 Date userDate = null;
+			SimpleDateFormat  format = new SimpleDateFormat("dd/MM/yyyy");  
+			try {  
+			    userDate = format.parse(user_date);  
+			 } catch (Exception e) {  
+			    // TODO Auto-generated catch block  
+			    e.printStackTrace();  
+			}
+			
+			if (new Date().after(userDate)) 
+		  	       Toast.makeText(getApplicationContext(), "please insert a valid date", Toast.LENGTH_LONG).show();
+			else
+			et.setText(selectedDay + "/" + (selectedMonth + 1) + "/"
 					+ selectedYear);
 		}
 	};
