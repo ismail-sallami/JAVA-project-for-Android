@@ -3,7 +3,7 @@ goeuro_test
 goeuro_test
 Test project for Goeuro
 
-A project my by Eclipse
+An  Eclipse project
 
 This application connects to Goeurp API to get countries list.
 The application gets the current location by the GPS and asks to turn it on if it is switched off. 
