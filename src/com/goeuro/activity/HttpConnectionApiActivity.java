@@ -76,10 +76,6 @@ public class HttpConnectionApiActivity extends Activity implements HttpListner, 
         setContentView(R.layout.main);
         //language list 
         spinner = (Spinner) findViewById(R.id.lang_spinner); 
-        lang_List.add("en");
-        lang_List.add("de");
-        lang_List.add("sp");
-        lang_List.add("fr");
         // Create the ArrayAdapter
         ArrayAdapter<CharSequence> lang_adapter = ArrayAdapter.createFromResource(
                 this, R.array.item_array, R.layout.spinner_layout);
@@ -289,10 +285,10 @@ public class HttpConnectionApiActivity extends Activity implements HttpListner, 
 	    Collections.sort(jsons, new Comparator<JSONObject>() {
 	        @Override
 	        public int compare(JSONObject lhs, JSONObject rhs) {
-	            String lid="",rid="";
+	           Float lid = null,rid= null;
 				try {
-					lid = lhs.getString("distance"); 
-					rid = rhs.getString("distance");
+					lid = Float.parseFloat(lhs.getString("distance")); 
+					rid = Float.parseFloat(rhs.getString("distance"));
 				} catch (JSONException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
